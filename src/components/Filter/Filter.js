@@ -1,21 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-class Filter extends Component {
-  render() {
-    return (
-      <>
-        <h3>Find contacts by name</h3>
-        <input
-          type="text"
-          name="filter"
-          value={this.props.value}
-          onChange={this.props.onChange}
-        />
-      </>
-    );
-  }
-}
+const Filter = ({ value, onChange }) => {
+  return (
+    <>
+      Find contacts by name
+      <input type="text" name="filter" value={value} onChange={onChange} />
+    </>
+  );
+};
 
 Filter.propTypes = {
   value: PropTypes.string,

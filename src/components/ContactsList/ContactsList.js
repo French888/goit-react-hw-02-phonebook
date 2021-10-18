@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const ContactsList = ({ findContact, onDeleteContact }) => {
   return (
     <ul>
-      {findContact().map(({ id, name, number }) => {
+      {findContact.map(({ id, name, number }) => {
         return (
           <ContactItem
             key={id}
@@ -19,9 +19,9 @@ const ContactsList = ({ findContact, onDeleteContact }) => {
   );
 };
 
+export default ContactsList;
+
 ContactsList.prototype = {
   findContact: PropTypes.func.isRequired,
   onDeleteContact: PropTypes.func.isRequired,
 };
-
-export default ContactsList;

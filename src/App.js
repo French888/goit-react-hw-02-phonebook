@@ -43,14 +43,13 @@ class App extends Component {
   findContact = () => {
     const { filter, contacts } = this.state;
     const normalizedFilter = filter.toLocaleLowerCase();
+    return contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
 
-    if (filter.length) {
-      return contacts.filter((contact) =>
-        contact.name.toLowerCase().includes(normalizedFilter)
-      );
-    } else {
-      return contacts;
-    }
+  changeFilter = (e) => {
+    this.setState({ filter: e.currentTarget.value });
   };
 
   deleteContact = (contactId) => {
@@ -62,6 +61,7 @@ class App extends Component {
   };
 
   render() {
+    const visibleContact = this.findContact();
     return (
       <Container>
         <h1> PhoneBook </h1>
@@ -69,9 +69,9 @@ class App extends Component {
 
         <div>
           <h2> Contacts </h2>
-          <Filter value={this.state.filter} onChange={this.handleChange} />
+          <Filter value={this.state.filter} onChange={this.changeFilter} />
           <ContactsList
-            findContact={this.findContact}
+            findContact={visibleContact}
             onDeleteContact={this.deleteContact}
           />
         </div>
