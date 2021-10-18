@@ -19,6 +19,14 @@ class App extends Component {
     const { name, value } = event.currentTarget;
     this.setState({ [name]: value });
   };
+
+  // contact.name  имя обьекта === name из инпута
+  hasContacts = (name) => {
+    return this.state.contacts.find((contact) => {
+      return contact.name.toLocaleLowerCase() === name.toLocaleLowerCase();
+    });
+  };
+
   // вызываем hasContact где найденое имя массива совпадает
   // с именем введенным в инпут то if (false) не выполнится будет алерт
 
@@ -30,12 +38,6 @@ class App extends Component {
     } else {
       alert(`${contact.name} is already in contacts`);
     }
-  };
-  // contact.name  имя обьекта === name из инпута
-  hasContacts = (name) => {
-    return this.state.contacts.find((contact) => {
-      return contact.name.toLocaleLowerCase() === name.toLocaleLowerCase();
-    });
   };
 
   findContact = () => {
