@@ -22,7 +22,7 @@ class App extends Component {
 
   // contact.name  имя обьекта === name из инпута
   hasContacts = (name) => {
-    return this.state.contacts.find((contact) => {
+    return this.state.contacts.some((contact) => {
       return contact.name.toLocaleLowerCase() === name.toLocaleLowerCase();
     });
   };
